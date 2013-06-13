@@ -1,0 +1,12 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+		 
+		 <f:entry title="${%Target ID}" field="targetId">
+			<f:textbox />
+			<f:description>${%Enter the Target ID to set for the application}</f:description>
+		</f:entry>
+		<f:entry title="${%Android device serial number}" field="serialNo">
+			<f:textbox />
+			<f:description>${%Enter the adb assigned serial number of the specific emulator/device to be tested on.}</f:description>
+		</f:entry>
+</j:jelly>

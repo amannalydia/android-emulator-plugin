@@ -1,10 +1,3 @@
-# CtsBuilder Execptions 
-CommandInterpreter.CommandFailed=command execution failed
-CommandInterpreter.UnableToDelete=Unable to delete script file {0}
-CommandInterpreter.UnableToProduceScript=Unable to produce a script file
-CommandInterpreter_UnableToGetAdbPath=Unable to get ADB path
-CommandInterpreter_UnableToGetEnvironment=Unable to get Environment Variable
-
 # Global config
 INVALID_DIRECTORY=Does not appear to be a valid directory
 INVALID_SDK_DIRECTORY=Does not look like an Android SDK directory
@@ -31,7 +24,6 @@ INVALID_TARGET_ABI=Unrecognised target ABI
 INVALID_EXECUTABLE=Unrecognised executable
 SD_CARD_SIZE_TOO_SMALL=SD card size must be at least 9 megabytes
 EMULATOR_CONFIGURATION_BAD=Unrecognised Android emulator configuration: ''{0}''
-INVOKE_ANDROID_BUILD_WRAPPER=Set Target and Device instances for build
 
 # SDK installation
 INSTALLING_SDK=No Android SDK found; let''s install it automatically...
@@ -123,14 +115,6 @@ LOADING_SNAPSHOT=Loading snapshot ''{0}'' into emulator on port {1}...
 SAVE_EMULATOR_SNAPSHOT=Save an Android emulator snapshot
 SAVING_SNAPSHOT=Saving snapshot ''{0}'' for emulator on port {1}...
 FINDING_PROJECTS=Searching for Android projects...
-UIAUTOMATOR_DISPLAYNAME=Invoke UIAutomator
-EXECUTE_ROBOTIUM=Invoke Robotium
-EXECUTE_MONKEY=Invoke Monkey
-RUN_CTS=Run CTS
-RUN_MONKEYTALK=Run MonkeyTalk
-INVALID_CTS_DIRECTORY=Does not appear to be a valid CTS directory
-CONSOLIDATED_REPORT=Consolidated Test Report
-
 
 # Project prerequisites
 INSTALL_PREREQUISITES=Install Android project prerequisites

@@ -48,9 +48,9 @@ public class AndroidEmulatorContext {
 
 		// Use the Port Allocator plugin to reserve the two ports we need
 		portAllocator = PortAllocationManager.getManager(computer);
-		userPort = portAllocator.allocateRandom(build, 5554);
-		adbPort = portAllocator.allocateRandom(build, 5555);
-		adbServerPort = portAllocator.allocateRandom(build, 5037);
+		userPort = portAllocator.allocateRandom(build, 0);
+		adbPort = portAllocator.allocateRandom(build, 0);
+		adbServerPort = portAllocator.allocateRandom(build, 0);
 
 		serial = "localhost:" + adbPort;
 	}

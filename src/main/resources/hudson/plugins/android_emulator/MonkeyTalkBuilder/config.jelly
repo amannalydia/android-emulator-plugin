@@ -1,0 +1,20 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">		
+			
+	<f:entry title="${%AJ APK }" field="command">
+		<f:textbox />
+		<f:description>${%Enter the complete APK path }</f:description>
+	</f:entry>				
+	<f:entry title="${%Package Name}"  field="packageName">		 	
+		<f:textbox  />
+		<f:description>${%Enter the source Package Name. }</f:description>
+	</f:entry>		
+	<f:entry title="${%Activity Name}"  field="activityName">		 	
+		<f:textbox  />
+		<f:description>${%Enter the Activity Name. }</f:description>
+	</f:entry>	
+	<f:entry title="${%Build.xml path}"  field="xmlPath">		 	
+		<f:textbox  />
+		<f:description>${%Enter the complete Build.xml location. }</f:description>
+	</f:entry>			
+	
+</j:jelly>

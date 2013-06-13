@@ -7,16 +7,16 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <artifactId>ATAF-plugin</artifactId>
+  <artifactId>android-emulator</artifactId>
   <packaging>hpi</packaging>
-  <version>2.0-SNAPSHOT</version>
-  <name>ATAF-plugin</name>
-  <url>http://wiki.jenkins-ci.org/display/JENKINS/ATAF+Plugin</url>
+  <version>2.11-SNAPSHOT</version>
+  <name>Android Emulator Plugin</name>
+  <url>http://wiki.jenkins-ci.org/display/JENKINS/Android+Emulator+Plugin</url>
   <developers>
     <developer>
-      <id>lydia</id>
-      <name>Lydia Amanna</name>
-      <email>lydia.amanna@gmail.com</email>
+      <id>orrc</id>
+      <name>Christopher Orr</name>
+      <email>chris@orr.me.uk</email>
       <timezone>1</timezone>
     </developer>
   </developers>
@@ -48,8 +48,8 @@
   </build>
 
   <scm>
-    <connection>scm:git:git://github.com/amannalydia/android-emulator-plugin.git</connection>
-    <developerConnection>scm:git:git@github.com:amannalydia/android-emulator-plugin.git</developerConnection>
+    <connection>scm:git:git://github.com/jenkinsci/android-emulator-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:jenkinsci/android-emulator-plugin.git</developerConnection>
   </scm>
 
   <distributionManagement>

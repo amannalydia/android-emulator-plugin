@@ -1,0 +1,13 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form">		
+			
+	<f:entry title="${%CTS Source code path}" field="command">
+		<f:textbox />
+		<f:description>${%Enter the path of CTS Source code}</f:description>
+	</f:entry>				
+	<f:entry title="${%Test plan name}"  field="testPlanName">		 	
+		<f:textbox  />
+		<f:description>${%Enter one of the Testcases - CTS, Signature, Android, Java, VM, RefApp, Performance }</f:description>
+	</f:entry>				
+	
+</j:jelly>

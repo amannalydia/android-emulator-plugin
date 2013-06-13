@@ -1,0 +1,16 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form">		
+
+			<f:entry title="${%Package ID}" field="packageId">		 	
+				<f:textbox />
+				<f:description>${%ID of the Android package to monkey around with}</f:description>
+			</f:entry>		
+			<f:entry title="${%Event count}" field="eventCount">
+				<f:textbox />
+				<f:description>${%Number of events the monkey should perform}</f:description>			 
+			</f:entry>	
+			<f:entry title="${%Delay between events}" field="delay">
+				<f:textbox />
+				<f:description>${%In milliseconds. If 0 or unspecified, events are generated as rapidly as possible}</f:description>			 
+			</f:entry>			
+</j:jelly>

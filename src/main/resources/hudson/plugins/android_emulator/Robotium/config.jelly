@@ -1,0 +1,16 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form">		
+
+			<f:entry title="${%Target Application path}" field="targetAppPath">		 	
+				<f:textbox />
+				<f:description>${%Path to the target application that you wish to test}</f:description>
+			</f:entry>	
+			<f:entry title="${%Test Application path}" field="testAppPath">		 	
+				<f:textbox />
+				<f:description>${%Path to the test application that contains the test files}</f:description>
+			</f:entry>			
+			<f:entry title="${%Test Application Package}" field="packageName">
+				<f:textbox />
+				<f:description>${%Enter the package name of the Test Application}</f:description>			 
+			</f:entry>				
+</j:jelly>
