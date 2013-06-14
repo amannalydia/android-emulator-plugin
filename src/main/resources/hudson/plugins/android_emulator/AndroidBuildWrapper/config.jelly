@@ -1,6 +1,7 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
          xmlns:t="/lib/hudson" xmlns:f="/lib/form">
 	<f:block>	 
+		<table>
 		 <f:entry title="${%Target ID}" field="targetId" help="${resURL}/plugin/ATAF-plugin/help-targetId.html">
 			<f:textbox />
 			<f:description>${%Enter the Target ID to set for the application}</f:description>
@@ -13,5 +14,6 @@
 			<f:textbox />
 			<f:description>${%Enter the location containing all necessary jar files required for testing android applications.}</f:description>
 		</f:entry>
+		</table>
 	</f:block>
 </j:jelly>

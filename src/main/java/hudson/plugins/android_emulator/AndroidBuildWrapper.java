@@ -52,7 +52,7 @@ public class AndroidBuildWrapper extends BuildWrapper implements Serializable{
             throws IOException, InterruptedException {
 			final PrintStream logger = listener.getLogger(); 
 			boolean deleteStatus;
-			String fileRepoPath = null;
+			
 			EnvVars envVars = new EnvVars();
 			try {
 				envVars = build.getEnvironment(listener);
@@ -68,8 +68,9 @@ public class AndroidBuildWrapper extends BuildWrapper implements Serializable{
 				AndroidEmulator.log(logger,"Workspace cleaned");				
 			} else
 				AndroidEmulator.log(logger,"Workspace could not be cleaned");
-			if((new File(envVars.get("JENKINS_HOME")+"\\File Repository")).exists()) {
-				deleteStatus = SrcFiles.deleteAllFiles(new File(envVars.get("JENKINS_HOME")+"\\File Repository"));
+			String fileRepoPath = envVars.get("JENKINS_HOME")+"\\File Repository";
+			if((new File(fileRepoPath).exists()) {
+				deleteStatus = SrcFiles.deleteAllFiles(fileRepoPath);
 				if(deleteStatus)
 					AndroidEmulator.log(logger,"File Repository cleaned");				
 				else
@@ -77,7 +78,6 @@ public class AndroidBuildWrapper extends BuildWrapper implements Serializable{
 			} else {
 				File fileRepo = new File(envVars.get("JENKINS_HOME"),"File Repository");
 				fileRepo.mkdir();
-				fileRepoPath = fileRepo.getAbsolutePath();
 			}
 			//String fileRepoPath = CreateFileRepo.createDir(envVars.get("JENKINS_HOME"));
 			SrcFiles.copyContents(new File(getLibsPath()),new File(fileRepoPath));
