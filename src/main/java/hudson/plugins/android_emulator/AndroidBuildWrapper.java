@@ -68,7 +68,7 @@ public class AndroidBuildWrapper extends BuildWrapper implements Serializable{
 			} else
 				AndroidEmulator.log(logger,"Workspace could not be cleaned");
 			String fileRepoPath = CreateFileRepo.createDir(envVars.get("JENKINS_HOME"));
-			SrcFiles.copyContents(getLibsPath(),fileRepoPath);
+			SrcFiles.copyContents(new File(getLibsPath()),new File(fileRepoPath));
 			return new Environment() {
 				@Override
 				public void buildEnvVars(Map<String, String> env) {
