@@ -89,7 +89,7 @@ public class MonkeyBuilder extends CommandInterpreter {
 	
         @Override
         public String getHelpFile() {
-            return Functions.getResourcePath() + "/plugin/android-emulator/help-uninstallPackage.html";
+            return Functions.getResourcePath() + "/plugin/ATAF-plugin/help-monkeyBuilder.html";
         }
 		
 		@Override

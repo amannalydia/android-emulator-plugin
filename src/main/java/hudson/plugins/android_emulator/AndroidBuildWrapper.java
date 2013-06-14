@@ -26,11 +26,13 @@ import org.kohsuke.stapler.StaplerRequest;
 public class AndroidBuildWrapper extends BuildWrapper implements Serializable{
 	private final String targetId;
 	private final String serialNo;
+	private final String libsPath;
 
 	@DataBoundConstructor
-	public AndroidBuildWrapper(String targetId, String serialNo) {
+	public AndroidBuildWrapper(String targetId, String serialNo, String libsPath) {
 		this.targetId = targetId;
 		this.serialNo = serialNo;
+		this.libsPath = libsPath;
 	}
 
 	public String getTargetId() {
@@ -39,7 +41,11 @@ public class AndroidBuildWrapper extends BuildWrapper implements Serializable{
 	
 	public String getSerialNo() {
 		return serialNo;
-	}	
+	}
+
+	public String getLibsPath() {
+		return libsPath;
+	}
 
 	@Override
 	public Environment setUp(AbstractBuild build, final Launcher launcher, BuildListener listener)
@@ -61,6 +67,8 @@ public class AndroidBuildWrapper extends BuildWrapper implements Serializable{
 				AndroidEmulator.log(logger,"Workspace cleaned");				
 			} else
 				AndroidEmulator.log(logger,"Workspace could not be cleaned");
+			String fileRepoPath = CreateFileRepo.createDir(envVars.get("JENKINS_HOME"));
+			SrcFiles.copyContents(getLibsPath(),fileRepoPath);
 			return new Environment() {
 				@Override
 				public void buildEnvVars(Map<String, String> env) {
@@ -81,7 +89,7 @@ public class AndroidBuildWrapper extends BuildWrapper implements Serializable{
 		
 		@Override
         public BuildWrapper newInstance(StaplerRequest req, JSONObject formData) throws FormException {
-			return new AndroidBuildWrapper(formData.getString("targetId"),formData.getString("serialNo"));			
+			return new AndroidBuildWrapper(formData.getString("targetId"),formData.getString("serialNo"),formData.getString("libsPath"));			
 		}
 		
 		 @Override

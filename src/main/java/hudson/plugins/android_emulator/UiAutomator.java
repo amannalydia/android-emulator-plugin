@@ -53,16 +53,14 @@ public class UiAutomator extends CommandInterpreter {
 
     protected String getContents() {
 		String absoluteAppPath = appPath[0];
-		//AndroidBuildWrapperSingleton obj = AndroidBuildWrapperSingleton.getSingletonInstance();
 		String appName = absoluteAppPath.substring(absoluteAppPath.lastIndexOf("\\")+1).trim();
 		String buildCmd = "call android create uitest-project -n "+appName+" -p "+"\""+absoluteAppPath+"\""+" -t "+targetId;
 		String switchToWorkspace = "cd "+"\""+absoluteAppPath+"\"";
 		String antTargets = "call ant clean build";	
-		//String logMessage = "ECHO My build complete";
 		String pushJar = "call adb -s "+serialNo+" push "+"\""+absoluteAppPath+"\\bin\\"+appName+".jar"+"\""+" /data/local/tmp";
 		createReportFolder();
 		String runTestCases = "call adb -s "+serialNo+" shell uiautomator runtest "+appName+".jar -c "+packageName+" > report\\"+appName+"-TEST.txt";
-		String parseToXml = "java -jar "+"\""+fileRepoPath+"\\uiautomator2junit-0.1.jar"+"\""+" report\\"+appName+"-TEST.txt";
+		String parseToXml = "java -jar "+"\""+fileRepoPath+"\\"+retrieveJarName()+"\""+" report\\"+appName+"-TEST.txt";
 		StringBuilder sb = new StringBuilder();
 		String finalCommand = sb.append(buildCmd).append("\n").append(switchToWorkspace).append("\n").append(antTargets).append("\n").append(pushJar).append("\n")/*.append(createReportFolder()).append("\n")*/.append(runTestCases).append("\n").append(parseToXml).toString();
         return finalCommand+"\r\nexit %ERRORLEVEL%";
@@ -73,21 +71,17 @@ public class UiAutomator extends CommandInterpreter {
 			folder.mkdir();
 	}
 	
-/*	private String createReportFolder() {
-		String line1 = "if exist report goto exists";
-		String line2 = "if not exist report goto doesn'texist";
-		String line3 = ":exists";
-		String line4 = "del report\\*.* /Q";
-		String line5 = "goto getreport";
-		String line6 = ":doesn'texist";
-		String line7 = "mkdir report";
-		String line8 = "goto getreport";
-		String line9 = ":getreport";
-		StringBuilder sb = new StringBuilder();
-		String reportFolder = sb.append(line1).append("\n").append(line2).append("\n").append(line3).append("\n").append(line4).append("\n").append(line5).append("\n").append(line6).append("\n").append(line7).append("\n").append(line8).append("\n").append(line9).append("\n").toString();
-		return reportFolder;
+	private String retrieveJarName() {
+		String jarFile;
+		File dir = new File(fileRepoPath);
+		File[] contents = dir.listFiles();
+		for(File file : contents) {
+			if(file.getName().contains("uiautomator2junit"))
+					jarFile = file.getName();
+		}
+		return jarFile;	
 	}
-*/
+	
     protected String getFileExtension() {
         return ".bat";
     }
@@ -143,18 +137,6 @@ public class UiAutomator extends CommandInterpreter {
 	 
 	 @Extension
     public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
-
-
-        public DescriptorImpl() {
-            super(UiAutomator.class);
-           load();
-        }
-
-        @Override
-        public boolean configure(final StaplerRequest req, final JSONObject formData) {
-            save();
-            return true;
-        }
 
         @Override
         public String getHelpFile() {

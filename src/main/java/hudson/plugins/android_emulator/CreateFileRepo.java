@@ -4,10 +4,10 @@ import java.io.File;
 
 public class CreateFileRepo {
 	public static String createDir(String location) {
-		File setupDir = new File(location,"File Repository");
-		if(!setupDir.exists())
-			setupDir.mkdir();
-		String dirPath = setupDir.getAbsolutePath();
+		File fileRepo = new File(location,"File Repository");
+		if(!fileRepo.exists())
+			fileRepo.mkdir();
+		String dirPath = fileRepo.getAbsolutePath();
 		return dirPath;
 	}
 }

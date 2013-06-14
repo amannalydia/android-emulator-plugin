@@ -118,7 +118,7 @@ public class Robotium extends CommandInterpreter {
 
         @Override
         public String getHelpFile() {
-            return Functions.getResourcePath() + "/plugin/android-emulator/help-uninstallPackage.html";
+            return Functions.getResourcePath() + "/plugin/ATAF-plugin/help-robotium.html";
         }
 		
 		@Override
