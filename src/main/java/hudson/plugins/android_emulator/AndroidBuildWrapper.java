@@ -70,7 +70,7 @@ public class AndroidBuildWrapper extends BuildWrapper implements Serializable{
 				AndroidEmulator.log(logger,"Workspace could not be cleaned");
 			String fileRepoPath = envVars.get("JENKINS_HOME")+"\\File Repository";
 			if((new File(fileRepoPath)).exists()) {
-				deleteStatus = SrcFiles.deleteAllFiles(fileRepoPath);
+				deleteStatus = SrcFiles.deleteAllFiles(new File(fileRepoPath));
 				if(deleteStatus)
 					AndroidEmulator.log(logger,"File Repository cleaned");				
 				else
