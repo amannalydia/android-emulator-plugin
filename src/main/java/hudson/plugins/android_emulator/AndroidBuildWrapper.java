@@ -52,7 +52,7 @@ public class AndroidBuildWrapper extends BuildWrapper implements Serializable{
             throws IOException, InterruptedException {
 			final PrintStream logger = listener.getLogger(); 
 			boolean deleteStatus;
-			String fileRepoPath;
+			String fileRepoPath = null;
 			EnvVars envVars = new EnvVars();
 			try {
 				envVars = build.getEnvironment(listener);
