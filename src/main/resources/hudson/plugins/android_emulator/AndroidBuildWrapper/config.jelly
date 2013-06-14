@@ -4,9 +4,11 @@
 		 <f:entry title="${%Target ID}" field="targetId">
 			<f:textbox />
 			<f:description>${%Enter the Target ID to set for the application}</f:description>
+			 help="${resURL}/plugin/ATAF-plugin/help-targetId.html">
 		</f:entry>
 		<f:entry title="${%Android device serial number}" field="serialNo">
 			<f:textbox />
 			<f:description>${%Enter the adb assigned serial number of the specific emulator/device to be tested on.}</f:description>
+			 help="${resURL}/plugin/ATAF-plugin/help-serialNo.html">
 		</f:entry>
 </j:jelly>
