@@ -142,7 +142,7 @@ public class MonkeyBuilder extends AbstractBuilder {
 
         @Override
         public String getHelpFile() {
-            return Functions.getResourcePath() + "/plugin/android-emulator/help-runMonkey.html";
+            return Functions.getResourcePath() + "/plugin/ATAF-plugin/help-runMonkey.html";
         }
 
         @Override

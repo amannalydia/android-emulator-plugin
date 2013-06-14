@@ -144,7 +144,7 @@ public class MonkeyRecorder extends Recorder {
 
         @Override
         public String getHelpFile() {
-            return Functions.getResourcePath() + "/plugin/android-emulator/help-publishMonkeyOutput.html";
+            return Functions.getResourcePath() + "/plugin/ATAF-plugin/help-publishMonkeyOutput.html";
         }
 
         @Override

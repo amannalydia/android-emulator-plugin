@@ -130,7 +130,7 @@ public class ProjectPrerequisitesInstaller extends AbstractBuilder {
 
         @Override
         public String getHelpFile() {
-            return Functions.getResourcePath() + "/plugin/android-emulator/help-installPrerequisites.html";
+            return Functions.getResourcePath() + "/plugin/ATAF-plugin/help-installPrerequisites.html";
         }
 
         @Override

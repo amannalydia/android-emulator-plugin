@@ -39,7 +39,7 @@ public class SnapshotLoadBuilder extends AbstractSnapshotBuilder {
 
         @Override
         public String getHelpFile() {
-            return Functions.getResourcePath() + "/plugin/android-emulator/help-snapshotLoad.html";
+            return Functions.getResourcePath() + "/plugin/ATAF-plugin/help-snapshotLoad.html";
         }
 
         @Override

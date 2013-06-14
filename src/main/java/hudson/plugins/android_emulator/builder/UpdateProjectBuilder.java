@@ -268,7 +268,7 @@ public class UpdateProjectBuilder extends AbstractBuilder {
 
         @Override
         public String getHelpFile() {
-            return Functions.getResourcePath() + "/plugin/android-emulator/help-createBuildFiles.html";
+            return Functions.getResourcePath() + "/plugin/ATAF-plugin/help-createBuildFiles.html";
         }
 
         @Override
