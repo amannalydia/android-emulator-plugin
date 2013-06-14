@@ -2,8 +2,8 @@
          xmlns:t="/lib/hudson" xmlns:f="/lib/form">
 	<f:block>	 
 		<table>
-		 <f:entry title="${%Target ID}" help="${resURL}/plugin/ATAF-plugin/help-targetId.html">
-			<f:textbox name="targetId" value="${instance.targetId}"/>
+		 <f:entry title="${%Target ID}" field="targetId" help="${resURL}/plugin/ATAF-plugin/help-targetId.html">
+			<f:textbox />
 			<f:description>${%Enter the Target ID to set for the application}</f:description>
 		</f:entry>
 		<f:entry title="${%Android device serial number}" field="serialNo" help="${resURL}/plugin/ATAF-plugin/help-serialNo.html">
