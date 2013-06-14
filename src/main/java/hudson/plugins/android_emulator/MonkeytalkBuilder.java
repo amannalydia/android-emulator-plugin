@@ -106,13 +106,24 @@ public class MonkeytalkBuilder extends CommandInterpreter {
 			changeDir = "cd " + appFullPath[0];
 		}
 		String cmd5 = "ant -lib " + "\"" + fileRepoPath
-				+ "\\monkeytalk-ant-1.0.50.jar" + "\"" + " " + mtargetName;
+				+ "\\"+retrieveJarName() + "\"" + " " + mtargetName;
 
 		String finalCommand = sb./* append(cmd0).append("\n"). */append(cmd1)
 				.append("\n").append(cmd2).append("\n").append(cmd3)
 				.append("\n").append(cmd4).append("\n").append(changeDir)
 				.append("\n").append(cmd5).toString();
 		return finalCommand + "\r\nexit %ERRORLEVEL%";
+	}
+	
+	private String retrieveJarName() {
+		String jarFile = null;
+		File dir = new File(fileRepoPath);
+		File[] contents = dir.listFiles();
+		for(File file : contents) {
+			if(file.getName().contains("monkeytalk-ant"))
+					jarFile = file.getName();
+		}
+		return jarFile;	
 	}
 
 	protected String getFileExtension() {
