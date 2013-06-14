@@ -828,7 +828,7 @@ public class AndroidEmulator extends BuildWrapper implements Serializable {
 
         @Override
         public String getHelpFile() {
-            return Functions.getResourcePath() + "/plugin/android-emulator/help-buildConfig.html";
+            return Functions.getResourcePath() + "/plugin/ATAF-plugin/help-buildConfig.html";
         }
 
         @Override

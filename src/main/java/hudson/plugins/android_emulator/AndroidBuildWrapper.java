@@ -24,34 +24,22 @@ import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
 public class AndroidBuildWrapper extends BuildWrapper implements Serializable{
-	public final String targetId;
-	public final String serialNo;
-	//private static AndroidBuildWrapperSingleton singletonObj = null;
-	
+	private final String targetId;
+	private final String serialNo;
+
 	@DataBoundConstructor
 	public AndroidBuildWrapper(String targetId, String serialNo) {
 		this.targetId = targetId;
 		this.serialNo = serialNo;
 	}
-	
-/*	public static synchronized AndroidBuildWrapperSingleton getSingletonInstance() {
-		if(singletonObj == null)
-			singletonObj = new AndroidBuildWrapperSingleton(targetId,serialNo);
-		return singletonObj;
-	}
-	
-	public Object clone() throws CloneNotSupportedException { 
-      throw new CloneNotSupportedException();
-	}*/
-	
+
 	public String getTargetId() {
 		return targetId;
 	}
 	
 	public String getSerialNo() {
 		return serialNo;
-	}
-	
+	}	
 
 	@Override
 	public Environment setUp(AbstractBuild build, final Launcher launcher, BuildListener listener)
@@ -93,8 +81,7 @@ public class AndroidBuildWrapper extends BuildWrapper implements Serializable{
 		
 		@Override
         public BuildWrapper newInstance(StaplerRequest req, JSONObject formData) throws FormException {
-			return new AndroidBuildWrapper(formData.getString("targetId"),formData.getString("serialNo"));
-			
+			return new AndroidBuildWrapper(formData.getString("targetId"),formData.getString("serialNo"));			
 		}
 		
 		 @Override
@@ -106,8 +93,7 @@ public class AndroidBuildWrapper extends BuildWrapper implements Serializable{
 			public boolean isApplicable(AbstractProject<?, ?> item) {
 				// TODO Auto-generated method stub
 				return true;
-			}
-			
+			}			
 			
 	}
 }

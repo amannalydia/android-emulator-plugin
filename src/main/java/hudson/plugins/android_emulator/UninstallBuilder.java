@@ -92,7 +92,7 @@ public class UninstallBuilder extends AbstractBuilder {
 
         @Override
         public String getHelpFile() {
-            return Functions.getResourcePath() + "/plugin/android-emulator/help-uninstallPackage.html";
+            return Functions.getResourcePath() + "/plugin/ATAF-plugin/help-uninstallPackage.html";
         }
 
         @Override

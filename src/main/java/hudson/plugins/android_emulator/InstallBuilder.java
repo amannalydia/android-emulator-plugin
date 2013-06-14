@@ -130,7 +130,7 @@ public class InstallBuilder extends AbstractBuilder {
 
         @Override
         public String getHelpFile() {
-            return Functions.getResourcePath() + "/plugin/android-emulator/help-installPackage.html";
+            return Functions.getResourcePath() + "/plugin/ATAF-plugin/help-installPackage.html";
         }
 
         @Override
