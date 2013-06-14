@@ -114,7 +114,7 @@ public class SrcFiles {
 			}
 		}
 	 }
-	 private static void copyContents(File source, File destination)
+	 public static void copyContents(File source, File destination)
 		    throws IOException {
 	
 			if (source.isDirectory()) {
