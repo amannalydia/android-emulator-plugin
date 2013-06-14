@@ -72,7 +72,7 @@ public class UiAutomator extends CommandInterpreter {
 	}
 	
 	private String retrieveJarName() {
-		String jarFile;
+		String jarFile = null;
 		File dir = new File(fileRepoPath);
 		File[] contents = dir.listFiles();
 		for(File file : contents) {
