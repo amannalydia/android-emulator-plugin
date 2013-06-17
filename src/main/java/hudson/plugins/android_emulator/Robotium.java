@@ -102,6 +102,8 @@ public class Robotium extends CommandInterpreter {
 			}	    
 		SrcFiles.copySrcFiles(testAppPath,appPath[0],envVars.get("JENKINS_HOME")+"\\File Repository");
 		SrcFiles.copySrcFiles(targetAppPath,appPath[1]);
+		ParseXml obj = new ParseXml();
+		obj.modifyFile(new File(appPath[1]+"\\AndroidManifest.xml"),"uses-permission","android:name","android.permission.WRITE_EXTERNAL_STORAGE");
 		targetId = envVars.get("ANDROID_TARGET_ID");
 		serialNo = envVars.get("ANDROID_SERIAL_NO");
 		super.perform(build,launcher,listener);
