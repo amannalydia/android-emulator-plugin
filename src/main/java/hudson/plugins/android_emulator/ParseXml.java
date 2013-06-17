@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParseXml {
-	private void modifyFile(File xmlFile, String node, String attributeName, String attributeValue) {
+	public void modifyFile(File xmlFile, String node, String attributeName, String attributeValue) {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder;
 		Document doc = null;
