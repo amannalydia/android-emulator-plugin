@@ -41,23 +41,34 @@ public class ParseXml {
 		}
 		doc.getDocumentElement().normalize();
 		Element rootNode = doc.getDocumentElement();
-		Element element;
+		Element element = null;		
 		NodeList nodeList = doc.getElementsByTagName(node);  
-		List<String> nodeValue = new ArrayList<String>();
-		for (int i = 0; i < nodeList.getLength(); i++) {
-			  Node n = nodeList.item(i);  
-			  if(n.getNodeType()==Node.ELEMENT_NODE){
-				  element = (Element) n;
-				  nodeValue.add(element.getAttribute(attributeName));					  				  					  
-			  }			  			 
+		if(node.equals("uses-permission")) {
+			List<String> nodeValue = new ArrayList<String>();
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				Node n = nodeList.item(i);  				
+				if(n.getNodeType()==Node.ELEMENT_NODE){
+					element = (Element) n;
+					nodeValue.add(element.getAttribute(attributeName));					  				  					  
+				}			  			 
+			}
+			boolean present = nodeExists(nodeValue,attributeValue);
+			if(!present){
+				Element ele = doc.createElement(node);
+				ele.setAttribute(attributeName, attributeValue);
+				rootNode.appendChild(ele);
+				writeToXml(doc,xmlFile);
+			}
+		} else if(node.equals("instrumentation")) {
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				Node n = nodeList.item(i);  
+				if(n.getNodeType()==Node.ELEMENT_NODE){
+					element = (Element) n;
+					element.setAttribute(attributeName,attributeValue);
+					writeToXml(doc,xmlFile);
+				}			
+			}
 		}
-		boolean present = nodeExists(nodeValue,attributeValue);
-		if(!present){
-			Element ele = doc.createElement(node);
-			ele.setAttribute(attributeName, attributeValue);
-			rootNode.appendChild(ele);
-			writeToXml(doc,xmlFile);
-		}		
 	}
 	
 	private boolean nodeExists(List<String> list, String attributeValue) {
