@@ -17,6 +17,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,9 +45,9 @@ public class ParseXml {
 		NodeList nodeList = doc.getElementsByTagName(node);  
 		List<String> nodeValue = new ArrayList<String>();
 		for (int i = 0; i < nodeList.getLength(); i++) {
-			  Node node = nodeList.item(i);  
-			  if(node.getNodeType()==Node.ELEMENT_NODE){
-				  element = (Element) node;
+			  Node n = nodeList.item(i);  
+			  if(n.getNodeType()==Node.ELEMENT_NODE){
+				  element = (Element) n;
 				  nodeValue.add(element.getAttribute(attributeName));					  				  					  
 			  }			  			 
 		}
@@ -56,8 +57,7 @@ public class ParseXml {
 			ele.setAttribute(attributeName, attributeValue);
 			rootNode.appendChild(ele);
 			writeToXml(doc,xmlFile);
-		}
-		
+		}		
 	}
 	
 	private boolean nodeExists(List<String> list, String attributeValue) {
@@ -73,8 +73,8 @@ public class ParseXml {
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = null;
 		try {
-			transformer = transformerFactory.newTransformer(xmlFile);
-			StreamResult result = new StreamResult();
+			transformer = transformerFactory.newTransformer();
+			StreamResult result = new StreamResult(xmlFile);
 			transformer.transform(source, result);
 			} catch (TransformerConfigurationException e) {
 				// TODO Auto-generated catch block
