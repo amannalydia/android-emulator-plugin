@@ -1,4 +1,4 @@
-package hudson.plugins.android_emulator;
+package hudson.plugins.android_emulator.util;
 
 import java.io.PrintStream;
 import java.io.IOException;

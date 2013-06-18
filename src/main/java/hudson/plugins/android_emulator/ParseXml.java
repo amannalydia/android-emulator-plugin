@@ -43,7 +43,7 @@ public class ParseXml {
 		Element rootNode = doc.getDocumentElement();
 		Element element = null;		
 		NodeList nodeList = doc.getElementsByTagName(node);  
-		if(node.equals("uses-permission")) {
+		
 			List<String> nodeValue = new ArrayList<String>();
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				Node n = nodeList.item(i);  				
@@ -54,20 +54,16 @@ public class ParseXml {
 			}
 			boolean present = nodeExists(nodeValue,attributeValue);
 			if(!present){
-				Element ele = doc.createElement(node);
-				ele.setAttribute(attributeName, attributeValue);
-				rootNode.appendChild(ele);
-				writeToXml(doc,xmlFile);
-			}
-		} else if(node.equals("instrumentation")) {
-			for (int i = 0; i < nodeList.getLength(); i++) {
-				Node n = nodeList.item(i);  
-				if(n.getNodeType()==Node.ELEMENT_NODE){
-					element = (Element) n;
+				if(node.equals("uses-permission")) {
+					Element ele = doc.createElement(node);
+					ele.setAttribute(attributeName, attributeValue);
+					rootNode.appendChild(ele);
+					writeToXml(doc,xmlFile);
+				} else if(node.equals("instrumentation")) {
 					element.setAttribute(attributeName,attributeValue);
 					writeToXml(doc,xmlFile);
-				}			
-			}
+				}
+			}			
 		}
 	}
 	

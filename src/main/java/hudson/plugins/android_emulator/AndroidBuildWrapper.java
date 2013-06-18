@@ -11,6 +11,7 @@ import hudson.model.AbstractBuild;
 import hudson.model.BuildListener;
 import hudson.Launcher;
 import hudson.plugins.android_emulator.util.Utils;
+import hudson.plugins.android_emulator.util.SrcFiles;
 
 import java.io.PrintStream;
 import java.io.IOException;
