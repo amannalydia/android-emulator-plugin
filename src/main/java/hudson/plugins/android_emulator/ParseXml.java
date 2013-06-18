@@ -64,8 +64,8 @@ public class ParseXml {
 					writeToXml(doc,xmlFile);
 				}
 			}			
-		}
 	}
+	
 	
 	private boolean nodeExists(List<String> list, String attributeValue) {
 		for(String str : list){
