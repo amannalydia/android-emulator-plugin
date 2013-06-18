@@ -115,7 +115,9 @@ public class UiAutomator extends CommandInterpreter {
 				AndroidEmulator.log(logger,appPath[0]);								
 			} catch(Exception e){
 				AndroidEmulator.log(logger,e.toString());
-			}			
+			}
+			ParseXml parseObj = new ParseXml();
+			parseObj.modifyFile(new File(appPath[0]+"\\.classpath"),"classpathentry","kind","lib","UiAutomator");			
 			SrcFiles.copySrcFiles(projectPath,appPath[0]);
 			File fileRepo = new File(envVars.get("JENKINS_HOME")+"\\File Repository");
 			fileRepoPath = fileRepo.getAbsolutePath();
