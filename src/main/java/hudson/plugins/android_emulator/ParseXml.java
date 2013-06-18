@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParseXml {
-	public void modifyFile(File xmlFile, String node, String attributeName, String attributeValue) {
+	public void modifyFile(File xmlFile, String node, String attributeName, String attributeValue, String toolName) {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder;
 		Document doc = null;
@@ -54,13 +54,30 @@ public class ParseXml {
 			}
 			boolean present = nodeExists(nodeValue,attributeValue);
 			if(!present){
-				if(node.equals("uses-permission")) {
-					Element ele = doc.createElement(node);
+				Element ele;
+				if(node.equals("classpathentry") && toolName.equals("Robotium")) {
+					ele = doc.createElement(node);
 					ele.setAttribute(attributeName, attributeValue);
+					ele.setAttribute("path","libs");
 					rootNode.appendChild(ele);
-					writeToXml(doc,xmlFile);
+					writeToXml(doc,xmlFile);					
+				} else if(node.equals("classpathentry") && toolName.equals("UiAutomator")) {
+					ele = doc.createElement(node);
+					ele.setAttribute(attributeName, attributeValue);
+					ele.setAttribute("path",UiAutomator.androidSdkRoot+"\\platforms\\"+UiAutomator.targetId+"\\android.jar");
+					rootNode.appendChild(ele);
+					Element ele1 = doc.createElement(node);
+					ele1.setAttribute(attributeName, attributeValue);
+					ele1.setAttribute("path",UiAutomator.androidSdkRoot+"\\platforms\\"+UiAutomator.targetId+"\\uiautomator.jar");
+					rootNode.appendChild(ele1);
+					writeToXml(doc,xmlFile);		
 				} else if(node.equals("instrumentation")) {
 					element.setAttribute(attributeName,attributeValue);
+					writeToXml(doc,xmlFile);					
+				} else {
+					ele = doc.createElement(node);
+					ele.setAttribute(attributeName, attributeValue);
+					rootNode.appendChild(ele);
 					writeToXml(doc,xmlFile);
 				}
 			}			

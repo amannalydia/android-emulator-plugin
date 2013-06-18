@@ -31,8 +31,9 @@ public class UiAutomator extends CommandInterpreter {
 	private final String packageName;
 	private String appPath[];
 	private String fileRepoPath;
-	private String targetId;
+	public static String targetId;
 	private String serialNo;
+	public static String androidSdkRoot;
 	
 @DataBoundConstructor
     public UiAutomator(String projectPath, String packageName) {		
@@ -120,6 +121,7 @@ public class UiAutomator extends CommandInterpreter {
 			fileRepoPath = fileRepo.getAbsolutePath();
 			targetId = envVars.get("ANDROID_TARGET_ID");		
 			serialNo = envVars.get("ANDROID_SERIAL_NO");
+			androidSdkRoot = envVars.get("ANDROID_HOME");
 			super.perform(build,launcher,listener);
             
 		/*	File file = new File(appPath[0]);
