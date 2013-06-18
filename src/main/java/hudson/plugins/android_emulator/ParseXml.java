@@ -66,10 +66,10 @@ public class ParseXml {
 					ele.setAttribute(attributeName, attributeValue);
 					ele.setAttribute("path",UiAutomator.androidSdkRoot+"\\platforms\\"+UiAutomator.targetId+"\\android.jar");
 					rootNode.appendChild(ele);
-					Element ele1 = doc.createElement(node);
-					ele1.setAttribute(attributeName, attributeValue);
-					ele1.setAttribute("path",UiAutomator.androidSdkRoot+"\\platforms\\"+UiAutomator.targetId+"\\uiautomator.jar");
-					rootNode.appendChild(ele1);
+					ele = doc.createElement(node);
+					ele.setAttribute(attributeName, attributeValue);
+					ele.setAttribute("path",UiAutomator.androidSdkRoot+"\\platforms\\"+UiAutomator.targetId+"\\uiautomator.jar");
+					rootNode.appendChild(ele);
 					writeToXml(doc,xmlFile);		
 				} else if(node.equals("instrumentation")) {
 					element.setAttribute(attributeName,attributeValue);
