@@ -31,9 +31,9 @@ public class UiAutomator extends CommandInterpreter {
 	private final String packageName;
 	private String appPath[];
 	private String fileRepoPath;
-	private String targetId;
+	public String targetId;
 	private String serialNo;
-	private String androidSdkRoot;
+	public String androidSdkRoot;
 	
 @DataBoundConstructor
     public UiAutomator(String projectPath, String packageName) {		
@@ -52,14 +52,6 @@ public class UiAutomator extends CommandInterpreter {
 	 public String[] buildCommandLine(FilePath script) {
         return new String[] {"cmd","/c","call",script.getRemote()};
     }
-	
-	public String getTargetId() {
-		return targetId;
-	}
-	
-	public String getAndroidSdkRoot() {
-		return androidSdkRoot;
-	}
 	
     protected String getContents() {
 		String absoluteAppPath = appPath[0];
