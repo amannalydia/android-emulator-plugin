@@ -31,9 +31,9 @@ public class UiAutomator extends CommandInterpreter {
 	private final String packageName;
 	private String appPath[];
 	private String fileRepoPath;
-	public String targetId;
+	private String targetId;
 	private String serialNo;
-	public String androidSdkRoot;
+	private String androidSdkRoot;
 	
 @DataBoundConstructor
     public UiAutomator(String projectPath, String packageName) {		
@@ -117,13 +117,13 @@ public class UiAutomator extends CommandInterpreter {
 				AndroidEmulator.log(logger,e.toString());
 			}
 			SrcFiles.copySrcFiles(projectPath,appPath[0]);
-			ParseXml parseObj = new ParseXml();
-			parseObj.modifyFile(new File(appPath[0]+"\\.classpath"),"classpathentry","kind","lib","UiAutomator");			
-			File fileRepo = new File(envVars.get("JENKINS_HOME")+"\\File Repository");
-			fileRepoPath = fileRepo.getAbsolutePath();
 			targetId = envVars.get("ANDROID_TARGET_ID");		
 			serialNo = envVars.get("ANDROID_SERIAL_NO");
 			androidSdkRoot = envVars.get("ANDROID_HOME");
+			ParseXml parseObj = new ParseXml();
+			parseObj.modifyFile(new File(appPath[0]+"\\.classpath"),targetId,androidSdkRoot);			
+			File fileRepo = new File(envVars.get("JENKINS_HOME")+"\\File Repository");
+			fileRepoPath = fileRepo.getAbsolutePath();			
 			super.perform(build,launcher,listener);
             
 		/*	File file = new File(appPath[0]);
