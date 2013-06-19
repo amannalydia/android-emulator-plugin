@@ -59,7 +59,7 @@ public class ParseXml {
 			boolean present = nodeExists(nodeValue,attributeValue);
 			if(!present){
 				Element ele;
-				if(node.equals("classpathentry") {
+				if(node.equals("classpathentry")) {
 					ele = doc.createElement(node);
 					ele.setAttribute(attributeName, attributeValue);
 					ele.setAttribute("path","libs");
