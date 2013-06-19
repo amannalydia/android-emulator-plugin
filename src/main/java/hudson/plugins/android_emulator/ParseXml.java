@@ -30,8 +30,8 @@ public class ParseXml {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder;
 		Document doc = null;
-		AbstractBuild<?,?> build;
-		TaskListener listener;
+		AbstractBuild<?,?> build = null;
+		TaskListener listener = null;
 		try {
 			docBuilder = dbFactory.newDocumentBuilder();
 			doc = docBuilder.parse(xmlFile);
