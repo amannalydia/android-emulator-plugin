@@ -43,7 +43,7 @@ public class UiAutomator extends CommandInterpreter {
     }
 	
 	public UiAutomator() {
-	
+		super(null);
 	}
 	
 	public String getProjectPath() {
