@@ -31,9 +31,9 @@ public class UiAutomator extends CommandInterpreter {
 	private final String packageName;
 	private String appPath[];
 	private String fileRepoPath;
-	public static String targetId;
+	public static final String targetId;
 	private String serialNo;
-	public static String androidSdkRoot;
+	public static final String androidSdkRoot;
 	
 @DataBoundConstructor
     public UiAutomator(String projectPath, String packageName) {		
