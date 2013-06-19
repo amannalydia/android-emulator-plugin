@@ -41,6 +41,7 @@ public class UiAutomator extends CommandInterpreter {
 	
 @DataBoundConstructor
     public UiAutomator(String projectPath, String packageName) {		
+		super(null);
 	   this.projectPath = projectPath;
 	   this.packageName = packageName;
     }
