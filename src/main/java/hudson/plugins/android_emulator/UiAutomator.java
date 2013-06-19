@@ -119,7 +119,7 @@ public class UiAutomator extends CommandInterpreter {
 			SrcFiles.copySrcFiles(projectPath,appPath[0]);
 			targetId = envVars.get("ANDROID_TARGET_ID");		
 			serialNo = envVars.get("ANDROID_SERIAL_NO");
-			androidSdkRoot = envVars.get("JENKINS_ANDROID_HOME");
+			androidSdkRoot = envVars.get("ANDROID_HOME");
 			AndroidEmulator.log(logger,androidSdkRoot);	
 			ParseXml parseObj = new ParseXml();
 			parseObj.modifyFile(new File(appPath[0]+"\\.classpath"),targetId,androidSdkRoot);			
