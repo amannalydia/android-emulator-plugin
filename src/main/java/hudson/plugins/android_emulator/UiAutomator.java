@@ -42,10 +42,6 @@ public class UiAutomator extends CommandInterpreter {
 	   this.packageName = packageName;
     }
 	
-	public UiAutomator() {
-		super();
-	}
-	
 	public String getProjectPath() {
 		return projectPath;
 	}

@@ -64,7 +64,7 @@ public class ParseXml {
 				} else if(node.equals("classpathentry") && toolName.equals("UiAutomator")) {
 					ele = doc.createElement(node);
 					ele.setAttribute(attributeName, attributeValue);
-					UiAutomator obj = new UiAutomator();
+					UiAutomator obj = new UiAutomator(null,null);
 					ele.setAttribute("path",obj.getAndroidSdkRoot+"\\platforms\\"+obj.getTargetId+"\\android.jar");
 					rootNode.appendChild(ele);
 					ele = doc.createElement(node);
