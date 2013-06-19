@@ -21,11 +21,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import hudson.model.AbstractBuild;
+import hudson.EnvVars;
+import hudson.model.TaskListener;
+
 public class ParseXml {
 	public void modifyFile(File xmlFile, String node, String attributeName, String attributeValue, String toolName) {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder;
 		Document doc = null;
+		AbstractBuild<?,?> build;
+		TaskListener listener;
 		try {
 			docBuilder = dbFactory.newDocumentBuilder();
 			doc = docBuilder.parse(xmlFile);
@@ -52,6 +58,18 @@ public class ParseXml {
 					nodeValue.add(element.getAttribute(attributeName));					  				  					  
 				}			  			 
 			}
+			EnvVars envVars = new EnvVars();
+			try {
+            envVars = build.getEnvironment(listener);
+			} catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            } catch (InterruptedException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }		
+			String targetId = envVars.get("ANDROID_TARGET_ID");
+			String androidSdkRoot = envVars.get("ANDROID_HOME");
 			boolean present = nodeExists(nodeValue,attributeValue);
 			if(!present){
 				Element ele;
@@ -64,12 +82,12 @@ public class ParseXml {
 				} else if(node.equals("classpathentry") && toolName.equals("UiAutomator")) {
 					ele = doc.createElement(node);
 					ele.setAttribute(attributeName, attributeValue);
-					UiAutomator obj = new UiAutomator(null,null);
-					ele.setAttribute("path",obj.androidSdkRoot+"\\platforms\\"+obj.targetId+"\\android.jar");
+					//UiAutomator obj = new UiAutomator(null,null);
+					ele.setAttribute("path",androidSdkRoot+"\\platforms\\"+targetId+"\\android.jar");
 					rootNode.appendChild(ele);
 					ele = doc.createElement(node);
 					ele.setAttribute(attributeName, attributeValue);
-					ele.setAttribute("path",obj.androidSdkRoot+"\\platforms\\"+obj.targetId+"\\uiautomator.jar");
+					ele.setAttribute("path",androidSdkRoot+"\\platforms\\"+targetId+"\\uiautomator.jar");
 					rootNode.appendChild(ele);
 					writeToXml(doc,xmlFile);		
 				} else if(node.equals("instrumentation")) {
