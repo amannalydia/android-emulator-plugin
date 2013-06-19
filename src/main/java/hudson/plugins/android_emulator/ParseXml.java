@@ -106,7 +106,7 @@ public class ParseXml {
 				nodeValue.add(element.getAttribute("kind"));					  				  					  
 			}			  			 
 		}
-		boolean present = nodeExists(nodeValue,attributeValue);
+		boolean present = nodeExists(nodeValue,"lib");
 		if(!present){
 			Element ele = doc.createElement("classpathentry");
 			ele.setAttribute("kind", "lib");
