@@ -35,6 +35,10 @@ public class UiAutomator extends CommandInterpreter {
 	private String serialNo;
 	private String androidSdkRoot;
 	
+	public UiAutomator() {
+	
+	}
+	
 @DataBoundConstructor
     public UiAutomator(String projectPath, String packageName) {		
        super(null);
@@ -61,7 +65,6 @@ public class UiAutomator extends CommandInterpreter {
 		return androidSdkRoot;
 	}
 	
-
     protected String getContents() {
 		String absoluteAppPath = appPath[0];
 		String appName = absoluteAppPath.substring(absoluteAppPath.lastIndexOf("\\")+1).trim();
