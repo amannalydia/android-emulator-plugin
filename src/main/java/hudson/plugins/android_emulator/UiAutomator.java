@@ -35,16 +35,16 @@ public class UiAutomator extends CommandInterpreter {
 	private String serialNo;
 	private String androidSdkRoot;
 	
-	public UiAutomator() {
-		super(null);
-	}
-	
 @DataBoundConstructor
     public UiAutomator(String projectPath, String packageName) {		
 		super(null);
 	   this.projectPath = projectPath;
 	   this.packageName = packageName;
     }
+	
+	public UiAutomator() {
+	
+	}
 	
 	public String getProjectPath() {
 		return projectPath;
