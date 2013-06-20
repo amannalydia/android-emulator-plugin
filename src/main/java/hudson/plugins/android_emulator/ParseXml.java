@@ -24,6 +24,7 @@ import java.util.List;
 import hudson.model.AbstractBuild;
 import hudson.EnvVars;
 import hudson.model.TaskListener;
+import hudson.plugins.android_emulator.util.Utils;
 
 public class ParseXml {
 	public void modifyFile(File xmlFile, String node, String attributeName, String attributeValue) {
