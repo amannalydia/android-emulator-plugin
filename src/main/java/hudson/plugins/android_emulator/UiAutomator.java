@@ -25,6 +25,7 @@ import hudson.tasks.CommandInterpreter;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Builder;
 import hudson.plugins.android_emulator.util.SrcFiles;
+import hudson.plugins.android_emulator.util.Utils;
 
 public class UiAutomator extends CommandInterpreter {
 	private final String projectPath;
