@@ -77,10 +77,11 @@ public class ParseXml {
 			}			
 	}
 	
-	public void modifyFile(File xmlFile, String targetId, String androidSdkRoot) {
+	public void modifyFile(File xmlFile, String targetId) {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder;
 		Document doc = null;
+		String androidSdkRoot = Utils.getConfiguredAndroidHome();
 		try {
 			docBuilder = dbFactory.newDocumentBuilder();
 			doc = docBuilder.parse(xmlFile);
