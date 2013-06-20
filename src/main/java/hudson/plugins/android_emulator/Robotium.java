@@ -105,7 +105,7 @@ public class Robotium extends CommandInterpreter {
 		SrcFiles.copySrcFiles(testAppPath,appPath[0],envVars.get("JENKINS_HOME")+"\\File Repository");
 		SrcFiles.copySrcFiles(targetAppPath,appPath[1]);
 		//ParseXml parseObj = new ParseXml();
-		ParseXml.modifyFile(new File(appPath[0]+"\\.classpath"),"classpathentry","path","libs","Robotium");
+		ParseXml.modifyFile(new File(appPath[0]+"\\.classpath"),"classpathentry","kind","lib","Robotium");
 		ParseXml.modifyFile(new File(appPath[1]+"\\AndroidManifest.xml"),"uses-permission","android:name","android.permission.WRITE_EXTERNAL_STORAGE","Robotium");
 		ParseXml.modifyFile(new File(appPath[0]+"\\AndroidManifest.xml"),"instrumentation","android:name","pl.polidea.instrumentation.PolideaInstrumentationTestRunner","Robotium");
 		targetId = envVars.get("ANDROID_TARGET_ID");
