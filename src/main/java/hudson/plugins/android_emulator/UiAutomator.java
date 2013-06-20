@@ -24,8 +24,7 @@ import java.util.*;
 import hudson.tasks.CommandInterpreter;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Builder;
-import hudson.plugins.android_emulator.util.SrcFiles;
-
+import hudson.plugins.android_emulator.util.*;
 
 public class UiAutomator extends CommandInterpreter {
 	private final String projectPath;
@@ -34,7 +33,6 @@ public class UiAutomator extends CommandInterpreter {
 	private String fileRepoPath;
 	private String targetId;
 	private String serialNo;
-	private String androidSdkRoot;
 	
 @DataBoundConstructor
     public UiAutomator(String projectPath, String packageName) {		
@@ -120,11 +118,12 @@ public class UiAutomator extends CommandInterpreter {
 			SrcFiles.copySrcFiles(projectPath,appPath[0]);
 			targetId = envVars.get("ANDROID_TARGET_ID");		
 			serialNo = envVars.get("ANDROID_SERIAL_NO");
-			//androidSdkRoot = Utils.getConfiguredAndroidHome();
+			String androidSdkRoot = Utils.getConfiguredAndroidHome();
 		//	androidSdkRoot = envVars.get("ANDROID_HOME");
 		//	AndroidEmulator.log(logger,androidSdkRoot);	
-			ParseXml parseObj = new ParseXml();
-			parseObj.modifyFile(new File(appPath[0]+"\\.classpath"),targetId);			
+		//	ParseXml parseObj = new ParseXml();
+			ParseXml.modifyFile(new File(appPath[0]+"\\.classpath"),"classpathentry","path",androidSdkRoot+"\\platforms\\"+targetId+"\\android.jar","UiAutomator");		
+			ParseXml.modifyFile(new File(appPath[0]+"\\.classpath"),"classpathentry","path",androidSdkRoot+"\\platforms\\"+targetId+"\\uiautomator.jar","UiAutomator");	
 			File fileRepo = new File(envVars.get("JENKINS_HOME")+"\\File Repository");
 			fileRepoPath = fileRepo.getAbsolutePath();			
 			super.perform(build,launcher,listener);

@@ -1,4 +1,4 @@
-package hudson.plugins.android_emulator;
+package hudson.plugins.android_emulator.util;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -27,7 +27,7 @@ import hudson.model.TaskListener;
 import hudson.plugins.android_emulator.util.Utils;
 
 public class ParseXml {
-	public void modifyFile(File xmlFile, String node, String attributeName, String attributeValue) {
+	public static void modifyFile(File xmlFile, String node, String attributeName, String attributeValue, String toolName) {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder;
 		Document doc = null;
@@ -60,12 +60,18 @@ public class ParseXml {
 			boolean present = nodeExists(nodeValue,attributeValue);
 			if(!present){
 				Element ele;
-				if(node.equals("classpathentry")) {
+				if(node.equals("classpathentry") && toolName.equalsIgnoreCase("robotium")) {
 					ele = doc.createElement(node);
-					ele.setAttribute(attributeName, attributeValue);
-					ele.setAttribute("path","libs");
+					ele.setAttribute("kind","lib");
+					ele.setAttribute(attributeName, attributeValue);					
 					rootNode.appendChild(ele);
 					writeToXml(doc,xmlFile);						
+				} else if(node.equals("classpathentry") && toolName.equalsIgnoreCase("uiautomator")) {
+					ele = doc.createElement(node);
+					ele.setAttribute("kind","lib");
+					ele.setAttribute(attributeName, attributeValue);					
+					rootNode.appendChild(ele);
+					writeToXml(doc,xmlFile);				
 				} else if(node.equals("instrumentation")) {
 					element.setAttribute(attributeName,attributeValue);
 					writeToXml(doc,xmlFile);					
@@ -78,7 +84,7 @@ public class ParseXml {
 			}			
 	}
 	
-	public void modifyFile(File xmlFile, String targetId) {
+/*	public void modifyFile(File xmlFile, String targetId) {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder;
 		Document doc = null;
@@ -120,9 +126,9 @@ public class ParseXml {
 			rootNode.appendChild(ele);
 			writeToXml(doc,xmlFile);
 		}
-	}
+	}*/
 	
-	private boolean nodeExists(List<String> list, String attributeValue) {
+	private static boolean nodeExists(List<String> list, String attributeValue) {
 		for(String str : list){
 			if(str.contains(attributeValue))
 				return true;
@@ -130,7 +136,7 @@ public class ParseXml {
 		return false;		
 	}
 	
-	private void writeToXml(Document document, File xmlFile) {
+	private static void writeToXml(Document document, File xmlFile) {
 		DOMSource source = new DOMSource(document);
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = null;
