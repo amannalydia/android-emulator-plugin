@@ -14,6 +14,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.NamedNodeMap;
 import org.xml.sax.SAXException;
 
 import java.io.File;
@@ -67,15 +68,10 @@ public class ParseXml {
 					rootNode.appendChild(ele);
 					writeToXml(doc,xmlFile);						
 				} else if(node.equals("classpathentry") && toolName.equalsIgnoreCase("uiautomator")) {
-					String attr = element.getAttribute("kind");
-					if(attr.equalsIgnoreCase("lib")){
-						
-					} else {
-						ele = doc.createElement(node);
-						ele.setAttribute("kind","lib");
-						ele.setAttribute(attributeName, attributeValue);					
-						rootNode.appendChild(ele);
-					}
+					ele = doc.createElement(node);
+					ele.setAttribute("kind","lib");		
+					ele.setAttribute(attributeName, attributeValue);															
+					rootNode.appendChild(ele);					
 					writeToXml(doc,xmlFile);				
 				} else if(node.equals("instrumentation")) {
 					element.setAttribute(attributeName,attributeValue);
@@ -86,19 +82,7 @@ public class ParseXml {
 					rootNode.appendChild(ele);
 					writeToXml(doc,xmlFile);
 				}
-			} else {
-				Element ele;
-				if(node.equals("classpathentry") && toolName.equalsIgnoreCase("robotium")) {
-					//ele = doc.createElement(element.getTagName());
-					element.setAttribute("path","libs");
-					//element.appendChild(ele);
-					writeToXml(doc,xmlFile);
-				} else if(node.equals("classpathentry") && toolName.equalsIgnoreCase("uiautomator")){
-				
-				}
-				
-
-			}
+			} 
 	}
 	
 /*	public void modifyFile(File xmlFile, String targetId) {
