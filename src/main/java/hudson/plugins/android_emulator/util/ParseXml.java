@@ -67,10 +67,15 @@ public class ParseXml {
 					rootNode.appendChild(ele);
 					writeToXml(doc,xmlFile);						
 				} else if(node.equals("classpathentry") && toolName.equalsIgnoreCase("uiautomator")) {
-					ele = doc.createElement(node);
-					ele.setAttribute("kind","lib");
-					ele.setAttribute(attributeName, attributeValue);					
-					rootNode.appendChild(ele);
+					String attr = element.getAttribute("kind");
+					if(attr.equalsIgnoreCase("lib")){
+						
+					} else {
+						ele = doc.createElement(node);
+						ele.setAttribute("kind","lib");
+						ele.setAttribute(attributeName, attributeValue);					
+						rootNode.appendChild(ele);
+					}
 					writeToXml(doc,xmlFile);				
 				} else if(node.equals("instrumentation")) {
 					element.setAttribute(attributeName,attributeValue);
@@ -84,10 +89,12 @@ public class ParseXml {
 			} else {
 				Element ele;
 				if(node.equals("classpathentry") && toolName.equalsIgnoreCase("robotium")) {
-					ele = doc.createElement(element);
-					ele.setAttribute("path","libs");
-					element.appendChild(ele);
+					//ele = doc.createElement(element.getTagName());
+					element.setAttribute("path","libs");
+					//element.appendChild(ele);
 					writeToXml(doc,xmlFile);
+				} else if(node.equals("classpathentry") && toolName.equalsIgnoreCase("uiautomator")){
+				
 				}
 				
 
